@@ -4,17 +4,25 @@ HTML-PY brings full HTML language tooling to Python triple-quoted strings so you
 
 ## ✨ Features
 
-- HTML syntax highlighting and IntelliSense inside Python strings assigned to `html`, `div`, `section`, `template`, names ending in `_html`, or variables annotated with an `html` type alias—works for triple-quoted blocks, single-line strings, and prefixed variants such as `f`, `rf`, `t`
-- Built-in HTML, CSS (within `<style>`), and JavaScript (within `<script>`) completions powered by VS Code’s language services
-- Emmet expansions for rapid authoring (`div>p*2` → expands automatically)
-- Optional CSS and JavaScript grammar injection inside `<style>` and `<script>` blocks
-- Works alongside existing Python highlighting outside the embedded regions
+- **Full HTML Language Support**: HTML syntax highlighting, autocomplete, and IntelliSense inside Python strings
+- **Smart Detection**: Recognizes `html`, `div`, `section`, `template` variables, names ending in `_html`, or variables with `html` type annotations
+- **Virtual Document Technology**: Creates virtual HTML documents for full language server features
+- **HTML Diagnostics**: Real-time linting and error checking for HTML within Python strings
+- **Emmet Support**: Fast HTML authoring with Emmet expansions (`div>p*2` → expands automatically)
+- **CSS & JavaScript**: Full support for `<style>` and `<script>` blocks with their respective language features
+- **Seamless Integration**: Works alongside existing Python tooling without interference
 
 ## 🚀 Getting Started
 
-1. Copy this folder into your VS Code extensions directory (e.g. `%USERPROFILE%/.vscode/extensions/html-py`).
-2. Reload VS Code (⌘/Ctrl+Shift+P → **Developer: Reload Window**).
-3. Open a Python file that contains a supported triple-quoted string (see above). The editor should display HTML highlighting inside the string while preserving normal Python tooling.
+### Installation
+
+1. **Install dependencies**: `npm install`
+2. **Compile TypeScript**: `npm run compile`
+3. **Install extension**:
+   - Press F5 to open Extension Development Host, or
+   - Copy this folder into your VS Code extensions directory (e.g. `~/.vscode/extensions/html-py`)
+4. **Reload VS Code**: ⌘/Ctrl+Shift+P → **Developer: Reload Window**
+5. **Try it**: Open a Python file with HTML strings and start typing HTML inside triple-quoted strings
 
 ### Recommended Settings
 
@@ -58,8 +66,28 @@ html = """
 
 You should see HTML styling, Emmet support, and CSS highlighting inside the `<style>` block.
 
+## 🛠️ Development
+
+### Build Commands
+
+- `npm run compile` - Compile TypeScript to JavaScript
+- `npm run watch` - Watch mode for development
+- Press F5 in VS Code to launch Extension Development Host
+
+### Architecture
+
+The extension uses virtual documents to provide full HTML language features:
+- **HTML Extractor**: Detects HTML regions in Python files using regex patterns
+- **Virtual Document Provider**: Creates virtual `.html` documents from Python strings
+- **Position Mapper**: Translates positions between Python and virtual HTML
+- **Completion Provider**: Proxies HTML completions to Python file
+- **Diagnostics Manager**: Maps HTML diagnostics back to Python
+
 ## 🛣️ Roadmap Ideas
 
-- Broader detection heuristics for template variables
-- Inline linting powered by HTML/CSS linters
-- Semantic highlighting for Python expressions inside template braces
+- ✅ Full HTML completions and IntelliSense
+- ✅ HTML diagnostics and linting
+- ✅ Emmet support
+- Multiple HTML regions per file
+- F-string variable highlighting
+- Go-to-definition for CSS classes/IDs

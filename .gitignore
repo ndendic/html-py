@@ -1,0 +1,36 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# TypeScript/Build
+out/
+dist/
+*.js.map
+*.d.ts
+
+# VS Code
+.vscode/*
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/tasks.json
+*.vsix
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Extension specific
+html-py-extension/out/
+html-py-extension/node_modules/
+*.vsix

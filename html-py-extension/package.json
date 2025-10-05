@@ -10,6 +10,20 @@
   "categories": [
     "Programming Languages"
   ],
+  "main": "./out/extension.js",
+  "activationEvents": [
+    "onLanguage:python"
+  ],
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.80.0",
+    "@types/node": "^18.0.0",
+    "typescript": "^5.0.0"
+  },
   "contributes": {
     "languages": [
       {
@@ -27,16 +41,11 @@
     ],
     "grammars": [
       {
-        "language": "html-py",
-        "scopeName": "source.html-py",
+        "scopeName": "source.html-py.injection",
         "path": "./syntaxes/html-py.tmLanguage.json",
-        "injectTo": [
-          "source.python"
-        ],
+        "injectTo": ["source.python"],
         "embeddedLanguages": {
-          "meta.embedded.inline.html": "html",
-          "meta.embedded.inline.css": "css",
-          "meta.embedded.inline.js": "javascript"
+          "meta.embedded.block.html": "html"
         }
       }
     ],

@@ -1,184 +1,59 @@
 {
-  "scopeName": "source.html-py",
-  "injectionSelector": "L:string.quoted.multi.python",
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "scopeName": "source.html-py.injection",
+  "injectionSelector": "L:source.python",
   "patterns": [
     {
-      "begin": "(?<=\\b(html|div|section|template)\\s*[:=]\\s*(?:[rRbBuUfFtT]{0,4})?\")(?!\")",
-      "end": "(?<!\\)\"",
-      "name": "meta.embedded.inline.html",
-      "patterns": [
-        { "include": "text.html.basic" },
-        { "include": "#style" },
-        { "include": "#script" }
-      ]
+      "include": "#html-triple-double"
     },
     {
-      "begin": "(?<=\\b[A-Za-z_][\\w]*_html\\s*=\\s*(?:[rRbBuUfFtT]{0,4})?\")(?!\")",
-      "end": "(?<!\\)\"",
-      "name": "meta.embedded.inline.html",
-      "patterns": [
-        { "include": "text.html.basic" },
-        { "include": "#style" },
-        { "include": "#script" }
-      ]
-    },
-    {
-      "begin": "(?<=\\b[A-Za-z_][\\w]*\\s*:\\s*html\\s*=\\s*(?:[rRbBuUfFtT]{0,4})?\")(?!\")",
-      "end": "(?<!\\)\"",
-      "name": "meta.embedded.inline.html",
-      "patterns": [
-        { "include": "text.html.basic" },
-        { "include": "#style" },
-        { "include": "#script" }
-      ]
-    },
-    {
-  "begin": "(?<=\\b(html|div|section|template)\\s*[:=]\\s*(?:[rRbBuUfFtT]{0,4})?\"\"\")",
-      "end": "\"\"\"",
-      "name": "meta.embedded.inline.html",
-      "patterns": [
-        { "include": "text.html.basic" },
-        { "include": "#style" },
-        { "include": "#script" }
-      ]
-    },
-    {
-  "begin": "(?<=\\b[A-Za-z_][\\w]*_html\\s*=\\s*(?:[rRbBuUfFtT]{0,4})?\"\"\")",
-      "end": "\"\"\"",
-      "name": "meta.embedded.inline.html",
-      "patterns": [
-        { "include": "text.html.basic" },
-        { "include": "#style" },
-        { "include": "#script" }
-      ]
-    },
-    {
-  "begin": "(?<=\\b[A-Za-z_][\\w]*\\s*:\\s*html\\s*=\\s*(?:[rRbBuUfFtT]{0,4})?\"\"\")",
-      "end": "\"\"\"",
-      "name": "meta.embedded.inline.html",
-      "patterns": [
-        { "include": "text.html.basic" },
-        { "include": "#style" },
-        { "include": "#script" }
-      ]
-    },
-    {
-  "begin": "(?<=\\b(html|div|section|template)\\s*[:=]\\s*(?:[rRbBuUfFtT]{0,4})?''')",
-      "end": "'''",
-      "name": "meta.embedded.inline.html",
-      "patterns": [
-        { "include": "text.html.basic" },
-        { "include": "#style" },
-        { "include": "#script" }
-      ]
-    },
-    {
-  "begin": "(?<=\\b[A-Za-z_][\\w]*_html\\s*=\\s*(?:[rRbBuUfFtT]{0,4})?''')",
-      "end": "'''",
-      "name": "meta.embedded.inline.html",
-      "patterns": [
-        { "include": "text.html.basic" },
-        { "include": "#style" },
-        { "include": "#script" }
-      ]
-    },
-    {
-  "begin": "(?<=\\b[A-Za-z_][\\w]*\\s*:\\s*html\\s*=\\s*(?:[rRbBuUfFtT]{0,4})?''')",
-      "end": "'''",
-      "name": "meta.embedded.inline.html",
-      "patterns": [
-        { "include": "text.html.basic" },
-        { "include": "#style" },
-        { "include": "#script" }
-      ]
-    },
-    {
-      "begin": "(?<=\\b(html|div|section|template)\\s*[:=]\\s*(?:[rRbBuUfFtT]{0,4})?')(?!')",
-      "end": "(?<!\\)'",
-      "name": "meta.embedded.inline.html",
-      "patterns": [
-        { "include": "text.html.basic" },
-        { "include": "#style" },
-        { "include": "#script" }
-      ]
-    },
-    {
-      "begin": "(?<=\\b[A-Za-z_][\\w]*_html\\s*=\\s*(?:[rRbBuUfFtT]{0,4})?')(?!')",
-      "end": "(?<!\\)'",
-      "name": "meta.embedded.inline.html",
-      "patterns": [
-        { "include": "text.html.basic" },
-        { "include": "#style" },
-        { "include": "#script" }
-      ]
-    },
-    {
-      "begin": "(?<=\\b[A-Za-z_][\\w]*\\s*:\\s*html\\s*=\\s*(?:[rRbBuUfFtT]{0,4})?')(?!')",
-      "end": "(?<!\\)'",
-      "name": "meta.embedded.inline.html",
-      "patterns": [
-        { "include": "text.html.basic" },
-        { "include": "#style" },
-        { "include": "#script" }
-      ]
+      "include": "#html-triple-single"
     }
   ],
   "repository": {
-    "style": {
-      "begin": "(<)(style)(?=\\b)",
-      "name": "meta.embedded.inline.css",
+    "html-triple-double": {
+      "begin": "(\\b(?:html|div|section|template)\\s*[:=]\\s*|\\b\\w*(?:_html|\\s*:\\s*html)\\s*=\\s*)(?:[rRfFbBuUtT]{0,2})(\"\"\")",
       "beginCaptures": {
         "1": {
-          "name": "punctuation.definition.tag.begin.html"
+          "name": "source.python"
         },
         "2": {
-          "name": "entity.name.tag.style.html"
+          "name": "punctuation.definition.string.begin.python"
         }
       },
-      "end": "(</)(style)(>)",
+      "end": "(\"\"\")",
       "endCaptures": {
         "1": {
-          "name": "punctuation.definition.tag.begin.html"
-        },
-        "2": {
-          "name": "entity.name.tag.style.html"
-        },
-        "3": {
-          "name": "punctuation.definition.tag.end.html"
+          "name": "punctuation.definition.string.end.python"
         }
       },
+      "contentName": "meta.embedded.block.html",
       "patterns": [
         {
-          "include": "source.css"
+          "include": "text.html.basic"
         }
       ]
     },
-    "script": {
-      "begin": "(<)(script)(?=\\b)",
-      "name": "meta.embedded.inline.js",
+    "html-triple-single": {
+      "begin": "(\\b(?:html|div|section|template)\\s*[:=]\\s*|\\b\\w*(?:_html|\\s*:\\s*html)\\s*=\\s*)(?:[rRfFbBuUtT]{0,2})(''')",
       "beginCaptures": {
         "1": {
-          "name": "punctuation.definition.tag.begin.html"
+          "name": "source.python"
         },
         "2": {
-          "name": "entity.name.tag.script.html"
+          "name": "punctuation.definition.string.begin.python"
         }
       },
-      "end": "(</)(script)(>)",
+      "end": "(''')",
       "endCaptures": {
         "1": {
-          "name": "punctuation.definition.tag.begin.html"
-        },
-        "2": {
-          "name": "entity.name.tag.script.html"
-        },
-        "3": {
-          "name": "punctuation.definition.tag.end.html"
+          "name": "punctuation.definition.string.end.python"
         }
       },
+      "contentName": "meta.embedded.block.html",
       "patterns": [
         {
-          "include": "source.js"
+          "include": "text.html.basic"
         }
       ]
     }
