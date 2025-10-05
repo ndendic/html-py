@@ -3,7 +3,37 @@
   "injectionSelector": "L:string.quoted.multi.python",
   "patterns": [
     {
-      "begin": "(?<=\\b(html|div|section|template)\\s*[:=]\\s*(?:[rRbBuUfF]{0,4})?\"\"\")",
+      "begin": "(?<=\\b(html|div|section|template)\\s*[:=]\\s*(?:[rRbBuUfFtT]{0,4})?\")(?!\")",
+      "end": "(?<!\\)\"",
+      "name": "meta.embedded.inline.html",
+      "patterns": [
+        { "include": "text.html.basic" },
+        { "include": "#style" },
+        { "include": "#script" }
+      ]
+    },
+    {
+      "begin": "(?<=\\b[A-Za-z_][\\w]*_html\\s*=\\s*(?:[rRbBuUfFtT]{0,4})?\")(?!\")",
+      "end": "(?<!\\)\"",
+      "name": "meta.embedded.inline.html",
+      "patterns": [
+        { "include": "text.html.basic" },
+        { "include": "#style" },
+        { "include": "#script" }
+      ]
+    },
+    {
+      "begin": "(?<=\\b[A-Za-z_][\\w]*\\s*:\\s*html\\s*=\\s*(?:[rRbBuUfFtT]{0,4})?\")(?!\")",
+      "end": "(?<!\\)\"",
+      "name": "meta.embedded.inline.html",
+      "patterns": [
+        { "include": "text.html.basic" },
+        { "include": "#style" },
+        { "include": "#script" }
+      ]
+    },
+    {
+  "begin": "(?<=\\b(html|div|section|template)\\s*[:=]\\s*(?:[rRbBuUfFtT]{0,4})?\"\"\")",
       "end": "\"\"\"",
       "name": "meta.embedded.inline.html",
       "patterns": [
@@ -13,7 +43,7 @@
       ]
     },
     {
-      "begin": "(?<=\\b[A-Za-z_][\\w]*_html\\s*=\\s*(?:[rRbBuUfF]{0,4})?\"\"\")",
+  "begin": "(?<=\\b[A-Za-z_][\\w]*_html\\s*=\\s*(?:[rRbBuUfFtT]{0,4})?\"\"\")",
       "end": "\"\"\"",
       "name": "meta.embedded.inline.html",
       "patterns": [
@@ -23,7 +53,7 @@
       ]
     },
     {
-      "begin": "(?<=\\b[A-Za-z_][\\w]*\\s*:\\s*html\\s*=\\s*(?:[rRbBuUfF]{0,4})?\"\"\")",
+  "begin": "(?<=\\b[A-Za-z_][\\w]*\\s*:\\s*html\\s*=\\s*(?:[rRbBuUfFtT]{0,4})?\"\"\")",
       "end": "\"\"\"",
       "name": "meta.embedded.inline.html",
       "patterns": [
@@ -33,7 +63,7 @@
       ]
     },
     {
-      "begin": "(?<=\\b(html|div|section|template)\\s*[:=]\\s*(?:[rRbBuUfF]{0,4})?''')",
+  "begin": "(?<=\\b(html|div|section|template)\\s*[:=]\\s*(?:[rRbBuUfFtT]{0,4})?''')",
       "end": "'''",
       "name": "meta.embedded.inline.html",
       "patterns": [
@@ -43,7 +73,7 @@
       ]
     },
     {
-      "begin": "(?<=\\b[A-Za-z_][\\w]*_html\\s*=\\s*(?:[rRbBuUfF]{0,4})?''')",
+  "begin": "(?<=\\b[A-Za-z_][\\w]*_html\\s*=\\s*(?:[rRbBuUfFtT]{0,4})?''')",
       "end": "'''",
       "name": "meta.embedded.inline.html",
       "patterns": [
@@ -53,8 +83,38 @@
       ]
     },
     {
-      "begin": "(?<=\\b[A-Za-z_][\\w]*\\s*:\\s*html\\s*=\\s*(?:[rRbBuUfF]{0,4})?''')",
+  "begin": "(?<=\\b[A-Za-z_][\\w]*\\s*:\\s*html\\s*=\\s*(?:[rRbBuUfFtT]{0,4})?''')",
       "end": "'''",
+      "name": "meta.embedded.inline.html",
+      "patterns": [
+        { "include": "text.html.basic" },
+        { "include": "#style" },
+        { "include": "#script" }
+      ]
+    },
+    {
+      "begin": "(?<=\\b(html|div|section|template)\\s*[:=]\\s*(?:[rRbBuUfFtT]{0,4})?')(?!')",
+      "end": "(?<!\\)'",
+      "name": "meta.embedded.inline.html",
+      "patterns": [
+        { "include": "text.html.basic" },
+        { "include": "#style" },
+        { "include": "#script" }
+      ]
+    },
+    {
+      "begin": "(?<=\\b[A-Za-z_][\\w]*_html\\s*=\\s*(?:[rRbBuUfFtT]{0,4})?')(?!')",
+      "end": "(?<!\\)'",
+      "name": "meta.embedded.inline.html",
+      "patterns": [
+        { "include": "text.html.basic" },
+        { "include": "#style" },
+        { "include": "#script" }
+      ]
+    },
+    {
+      "begin": "(?<=\\b[A-Za-z_][\\w]*\\s*:\\s*html\\s*=\\s*(?:[rRbBuUfFtT]{0,4})?')(?!')",
+      "end": "(?<!\\)'",
       "name": "meta.embedded.inline.html",
       "patterns": [
         { "include": "text.html.basic" },

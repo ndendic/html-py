@@ -4,7 +4,7 @@ HTML-PY brings full HTML language tooling to Python triple-quoted strings so you
 
 ## ✨ Features
 
-- HTML syntax highlighting and IntelliSense inside Python multiline strings assigned to `html`, `div`, `section`, `template`, names ending in `_html`, or variables annotated with an `html` type alias
+- HTML syntax highlighting and IntelliSense inside Python strings assigned to `html`, `div`, `section`, `template`, names ending in `_html`, or variables annotated with an `html` type alias—works for triple-quoted blocks, single-line strings, and prefixed variants such as `f`, `rf`, `t`
 - Built-in HTML, CSS (within `<style>`), and JavaScript (within `<script>`) completions powered by VS Code’s language services
 - Emmet expansions for rapid authoring (`div>p*2` → expands automatically)
 - Optional CSS and JavaScript grammar injection inside `<style>` and `<script>` blocks
