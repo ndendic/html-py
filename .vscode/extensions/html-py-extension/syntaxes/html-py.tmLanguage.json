@@ -1,0 +1,126 @@
+{
+  "scopeName": "source.html-py",
+  "injectionSelector": "L:string.quoted.multi.python",
+  "patterns": [
+    {
+      "begin": "(?<=\\b(html|div|section|template)\\s*[:=]\\s*(?:[rRbBuUfF]{0,4})?\"\"\")",
+      "end": "\"\"\"",
+      "name": "meta.embedded.inline.html",
+      "patterns": [
+        { "include": "text.html.basic" },
+        { "include": "#style" },
+        { "include": "#script" }
+      ]
+    },
+    {
+      "begin": "(?<=\\b[A-Za-z_][\\w]*_html\\s*=\\s*(?:[rRbBuUfF]{0,4})?\"\"\")",
+      "end": "\"\"\"",
+      "name": "meta.embedded.inline.html",
+      "patterns": [
+        { "include": "text.html.basic" },
+        { "include": "#style" },
+        { "include": "#script" }
+      ]
+    },
+    {
+      "begin": "(?<=\\b[A-Za-z_][\\w]*\\s*:\\s*html\\s*=\\s*(?:[rRbBuUfF]{0,4})?\"\"\")",
+      "end": "\"\"\"",
+      "name": "meta.embedded.inline.html",
+      "patterns": [
+        { "include": "text.html.basic" },
+        { "include": "#style" },
+        { "include": "#script" }
+      ]
+    },
+    {
+      "begin": "(?<=\\b(html|div|section|template)\\s*[:=]\\s*(?:[rRbBuUfF]{0,4})?''')",
+      "end": "'''",
+      "name": "meta.embedded.inline.html",
+      "patterns": [
+        { "include": "text.html.basic" },
+        { "include": "#style" },
+        { "include": "#script" }
+      ]
+    },
+    {
+      "begin": "(?<=\\b[A-Za-z_][\\w]*_html\\s*=\\s*(?:[rRbBuUfF]{0,4})?''')",
+      "end": "'''",
+      "name": "meta.embedded.inline.html",
+      "patterns": [
+        { "include": "text.html.basic" },
+        { "include": "#style" },
+        { "include": "#script" }
+      ]
+    },
+    {
+      "begin": "(?<=\\b[A-Za-z_][\\w]*\\s*:\\s*html\\s*=\\s*(?:[rRbBuUfF]{0,4})?''')",
+      "end": "'''",
+      "name": "meta.embedded.inline.html",
+      "patterns": [
+        { "include": "text.html.basic" },
+        { "include": "#style" },
+        { "include": "#script" }
+      ]
+    }
+  ],
+  "repository": {
+    "style": {
+      "begin": "(<)(style)(?=\\b)",
+      "name": "meta.embedded.inline.css",
+      "beginCaptures": {
+        "1": {
+          "name": "punctuation.definition.tag.begin.html"
+        },
+        "2": {
+          "name": "entity.name.tag.style.html"
+        }
+      },
+      "end": "(</)(style)(>)",
+      "endCaptures": {
+        "1": {
+          "name": "punctuation.definition.tag.begin.html"
+        },
+        "2": {
+          "name": "entity.name.tag.style.html"
+        },
+        "3": {
+          "name": "punctuation.definition.tag.end.html"
+        }
+      },
+      "patterns": [
+        {
+          "include": "source.css"
+        }
+      ]
+    },
+    "script": {
+      "begin": "(<)(script)(?=\\b)",
+      "name": "meta.embedded.inline.js",
+      "beginCaptures": {
+        "1": {
+          "name": "punctuation.definition.tag.begin.html"
+        },
+        "2": {
+          "name": "entity.name.tag.script.html"
+        }
+      },
+      "end": "(</)(script)(>)",
+      "endCaptures": {
+        "1": {
+          "name": "punctuation.definition.tag.begin.html"
+        },
+        "2": {
+          "name": "entity.name.tag.script.html"
+        },
+        "3": {
+          "name": "punctuation.definition.tag.end.html"
+        }
+      },
+      "patterns": [
+        {
+          "include": "source.js"
+        }
+      ]
+    }
+  }
+}
